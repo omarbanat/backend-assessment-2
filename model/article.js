@@ -7,10 +7,11 @@ const articleSchema = new Schema({
   category:{type: String, required:true},
   body:{type: String, required:true},
   author:{type: String, required:true},
-  image:{type: String, required:true}
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  image:{type: String, required:true},
+  created_at: {type: Date, required:true},
+  updated_at: {type: Date, required:true},
+}
 );
-});
+
 const Article= model('Article',articleSchema);
 module.exports = Article;
