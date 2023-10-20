@@ -5,7 +5,7 @@ const articleSchema = new Schema({
   
   name:{type: String, required:true},
   category:{type: String, required:true},
-  body:{type: String, required:true},
+  body1:{type: String, required:true},
   author:{type: String, required:true},
   image:{type: String, required:true},
   created_at: {type: Date, required:true},

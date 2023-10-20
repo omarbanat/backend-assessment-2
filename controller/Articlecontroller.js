@@ -5,7 +5,7 @@ const addArticle= async (req,res)=>{
     const schema=new Article({
       image:req.body.image,
       category:req.body.category,
-      body:req.body.body,
+      body1:req.body.body1,
       author:req.body.author,
       name:req.body.name
 //i have to get current date to insert it in field created and updated
@@ -59,4 +59,14 @@ const deleteArticle = async (req, res) => {
     }
   };
 
-module.exports = {getArticle,deleteArticle,addArticle};
+  const  updateArticle = async(req,res)=>{
+    try{
+        let id=req.params.id;
+        await article.updateOne({_id:id},{$set: [{name:req.body.name},{category:req.body.category},{author:req.body.author},{body1:req.body.body1},{image:req.body.image}]});
+        res.status(200).json({message:"A Article updated successfully"});
+    }catch(error){
+        res.status(500).json({message:"An error occured",error:error});
+    }
+}
+
+module.exports = {getArticle,deleteArticle,addArticle,updateArticle};
