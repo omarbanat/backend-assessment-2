@@ -8,7 +8,7 @@ const addArticle= async (req,res)=>{
       body:req.body.body,
       author:req.body.author,
       name:req.body.name
-
+//i have to get current date to insert it in field created and updated
     });
     const newArticle = await schema.save();
     res.status(200).json({
@@ -59,4 +59,4 @@ const deleteArticle = async (req, res) => {
     }
   };
 
-module.exports = {getArticle,deleteArticle, addArticle};
+module.exports = {getArticle,deleteArticle,addArticle};
