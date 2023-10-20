@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
-const uri= mongodb+srv://jocelynerizk:<password>@cluster0.teldjov.mongodb.net/;
+const DatabaseUrl= mongodb+srv://jocelynerizk:<password>@cluster0.teldjov.mongodb.net/;
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
