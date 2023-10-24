@@ -1,3 +1,4 @@
+const { imageUploader } = require('../extra/imageUploader');
 const Article = require('../models/Article');
 
 const getAllArticles = async (req, res) => {
@@ -19,7 +20,12 @@ const getAllArticles = async (req, res) => {
 
 const addArticle = async (req, res) => {
   try {
-    const article = await Article.create(req.body);
+    const imageURL = await imageUploader(req);
+
+    const article = await Article.create({
+      ...req.body,
+      image: imageURL,
+    });
     res.status(200).json({
       success: true,
       message: 'Article added successfully',
