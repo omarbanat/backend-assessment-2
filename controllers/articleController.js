@@ -1,5 +1,5 @@
 const Article = require('../models/articleModel');
-const { imageUploader } = require('./imageUploader');
+const { imageUploader } = require('../imageUploader');
 
 const addArticle = async (req, res) => {
     try {
