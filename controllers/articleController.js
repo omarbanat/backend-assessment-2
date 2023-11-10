@@ -1,13 +1,18 @@
 const Article = require('../models/articleModel');
+const { imageUploader } = require('./imageUploader');
 
 const addArticle = async (req, res) => {
     try {
+        const imageURL = await imageUploader(req);
         const schema = new Article({
-            image_url: req.body.image_url,
+            image_url: imageURL,
             title: req.body.title,
             category: req.body.category,
             body: req.body.body,
             author: req.body.author,
+            // or 
+            //  ...req.body,
+            //image_url: imageURL,
         });
         const newArticle = await schema.save();
         res.status(200).json({
@@ -16,7 +21,7 @@ const addArticle = async (req, res) => {
             data: newArticle,
         });
     } catch (error) {
-        res.status(404).json({
+        res.status(400).json({
             success: false,
             message: 'An error occured while adding the article',
             error: error,
@@ -101,5 +106,10 @@ const deleteArticle = async (req, res) => {
     }
 };
 
-
-module.exports = { addArticle, getArticles, getArticleById, updateArticleById, deleteArticle }; 
+module.exports = {
+    addArticle,
+    getArticles,
+    getArticleById,
+    updateArticleById,
+    deleteArticle
+}; 

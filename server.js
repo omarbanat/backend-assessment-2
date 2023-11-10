@@ -5,9 +5,10 @@ require('dotenv').config();
 
 const connexion = require('./config/database');
 const articleRoutes = require('./routes/articleRoutes');
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
+app.use(express.urlencoded()); // ?
 app.use(cors());
 app.use('/articles', articleRoutes);
 
